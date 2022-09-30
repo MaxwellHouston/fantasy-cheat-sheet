@@ -1,0 +1,8 @@
+{
+  "name": "Fantasy-Football-Cheat-Sheet",
+  "version": "1.0.0",
+  "description": "PERN web app",
+  "main": "index.js",
+  "author": "MaxwellHouston <87088784+MaxwellHouston@users.noreply.github.com>",
+  "license": "MIT"
+}
