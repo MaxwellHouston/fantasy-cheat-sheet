@@ -4,5 +4,9 @@
   "description": "PERN web app",
   "main": "index.js",
   "author": "MaxwellHouston <87088784+MaxwellHouston@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1"
+  }
 }
