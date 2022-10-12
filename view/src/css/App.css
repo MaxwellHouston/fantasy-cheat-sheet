@@ -1,7 +1,23 @@
-nav {
-    background-color: aqua;
-    height: 7rem;
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../utilities/fonts/noto-sans/NotoSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../utilities/fonts/noto-sans/NotoSans-ExtraBoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  /* Reset Links */
+a {
+    text-decoration: none;
+    color: inherit;
 }
+
+
 
 footer {
     background-color: black;

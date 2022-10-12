@@ -1,3 +1,5 @@
+import './Adp.css';
+
 export const Adp = () => {
 
     return(
