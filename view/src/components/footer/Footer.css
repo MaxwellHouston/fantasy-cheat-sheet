@@ -1,0 +1,17 @@
+footer {
+    font-family: 'Noto Sans';
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 4rem;
+  }
+  
+  footer a {
+    color: rgb(167, 255, 251);
+    text-decoration: underline;
+  }

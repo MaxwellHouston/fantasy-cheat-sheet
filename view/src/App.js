@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Adp } from './components/adp/Adp';
-import { Footer } from './components/Footer';
+import { Footer } from './components/footer/Footer';
 import { Home } from './components/home/Home';
 import { NavBar } from './components/navbar/NavBar';
 import { PlayerProfile } from './components/players/PlayerProfile';
