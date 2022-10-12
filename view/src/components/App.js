@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import { Adp } from './components/adp/Adp';
-import { Footer } from './components/Footer';
-import { Home } from './components/home/Home';
-import { NavBar } from './components/NavBar';
-import { PlayerProfile } from './components/players/PlayerProfile';
-import { Players } from './components/players/Players';
-import { TeamProfile } from './components/teams/TeamProfile';
-import { Teams } from './components/teams/Teams';
+import { Adp } from './adp/Adp';
+import { Footer } from './Footer';
+import { Home } from './home/Home';
+import { NavBar } from './NavBar';
+import { PlayerProfile } from './players/PlayerProfile';
+import { Players } from './players/Players';
+import { TeamProfile } from './teams/TeamProfile';
+import { Teams } from './teams/Teams';
 import './css/App.css';
 
 function App() {
