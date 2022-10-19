@@ -1,0 +1,23 @@
+.home-page {
+    background-image: url('../../utilities/images/background.jpg');
+    background-position: center;
+    background-size: contain;
+    height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.text-container {
+    font-family: 'Noto Sans';
+    border: 2px solid black;
+    width: 35%;
+    margin: 4rem 0;
+    background-color: #fff;
+}
+
+.text-container p {
+    margin: 2rem;
+    line-height: 1.5rem;
+    text-indent: 2rem;
+}
