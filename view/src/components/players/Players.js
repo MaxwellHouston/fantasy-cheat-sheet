@@ -18,7 +18,7 @@ export const Players = () => {
                 break;
             case 'RB':
                 setStatType('rushing');
-                break;
+                break; 
             default:
                 setStatType('receiving');
                 break;
@@ -38,4 +38,4 @@ export const Players = () => {
             <DataTable dataArray={passingData} rowIdOne={'player_id'} rowIdTwo={null} />
         </div>
     )
-}
+} 

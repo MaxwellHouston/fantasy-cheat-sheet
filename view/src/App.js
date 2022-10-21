@@ -13,14 +13,16 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path='/' element={ <Home /> }/>
-        <Route path='/players' element={ <Players /> }/>
-        <Route path='/players/:playerid' element={ <PlayerProfile /> }/>
-        <Route path='/teams' element={ <Teams /> }/>
-        <Route path='/teams/:teamid' element={ <TeamProfile /> }/>
-        <Route path='/adp' element={ <Adp /> }/>
-      </Routes>
+      <div className='routes-container'>
+        <Routes>
+          <Route path='/' element={ <Home /> }/>
+          <Route path='/players' element={ <Players /> }/>
+          <Route path='/players/:playerid' element={ <PlayerProfile /> }/>
+          <Route path='/teams' element={ <Teams /> }/>
+          <Route path='/teams/:teamid' element={ <TeamProfile /> }/>
+          <Route path='/adp' element={ <Adp /> }/>
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
