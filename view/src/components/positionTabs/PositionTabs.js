@@ -9,7 +9,7 @@ export const PositionTabs = ({updatePosition, position}) => {
     }
 
     return(
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', paddingBottom: '.5rem' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', paddingBottom: '.5rem', backgroundColor: '#fff' }}>
           <TabList value={position} onChange={handleChange} textColor="secondary" indicatorColor="secondary">
             <Tab label="QB" value="QB" />
             <Tab label="RB" value="RB" />

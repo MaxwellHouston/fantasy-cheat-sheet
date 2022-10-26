@@ -31,6 +31,7 @@ export const Players = () => {
 
     return(
         <div className="players-page">
+        <h1>Stats By Players</h1>
             <div className="options-container">
                 <PositionTabs updatePosition={updatePosition} position={position} />
                 <StatTypeMenu statType={statType} updateStatType={updateStatType} />
