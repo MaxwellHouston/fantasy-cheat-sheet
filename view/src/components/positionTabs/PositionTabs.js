@@ -15,6 +15,7 @@ export const PositionTabs = ({updatePosition, position}) => {
             <Tab label="RB" value="RB" />
             <Tab label="WR" value="WR" />
             <Tab label="TE" value="TE" />
+            <Tab label="WR" value="WR" />
           </TabList>
         </Box>
     )
