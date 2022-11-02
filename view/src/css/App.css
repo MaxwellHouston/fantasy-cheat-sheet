@@ -20,8 +20,6 @@ a {
 /*  Background  */
 
 .routes-container {
-  background-image: url('../utilities/images/background.jpg');
-  background-position: center;
-  background-size: contain;
+  background-color: #fff;
 }
 

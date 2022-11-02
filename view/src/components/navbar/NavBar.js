@@ -16,7 +16,7 @@ export const NavBar = () => {
     }, [location])
 
     return(
-        <nav>
+        <nav data-testid='nav-bar'>
             <div className='logo-container'>
                 <img className="nav-bar-logo" src={logo} alt='Fantasy Cheat Sheet logo' />
                 <h1>FANTASY CHEAT SHEET</h1>
