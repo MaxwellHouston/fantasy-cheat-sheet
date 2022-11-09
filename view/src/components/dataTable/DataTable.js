@@ -19,7 +19,8 @@ export const DataTable = ({dataArray, rowIdOne, rowIdTwo}) => {
         <DataGrid
           rows={dataArray}
           getRowId={(row) => rowIdTwo ? (row[rowIdOne] + row[rowIdTwo]) : row[rowIdOne]}  
-          columns={columnsTemplate} 
+          columns={columnsTemplate}
+          columnBuffer={columnsTemplate.length} 
           sx={{
             boxShadow: 5,
             border: 2,
