@@ -20,7 +20,8 @@ export const DataTable = ({dataArray, rowIdOne, rowIdTwo}) => {
           rows={dataArray}
           getRowId={(row) => rowIdTwo ? (row[rowIdOne] + row[rowIdTwo]) : row[rowIdOne]}  
           columns={columnsTemplate}
-          columnBuffer={columnsTemplate.length} 
+          columnBuffer={columnsTemplate.length}
+          rowBuffer={dataArray.length} 
           sx={{
             boxShadow: 5,
             border: 2,
