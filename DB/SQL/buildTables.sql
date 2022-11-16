@@ -62,15 +62,15 @@ SELECT id,week,team,tgt,rec,yds,td
 FROM raw_te_receiving JOIN players ON players.name = raw_te_receiving.player;
 
 /* Fill Fantasy */
-INSERT INTO fantasy_weeks(player_id,week,stand,ppr)
-SELECT id,week,stand,ppr
+INSERT INTO fantasy_weeks(player_id,team_id,week,stand,ppr)
+SELECT id,team,week,stand,ppr
 FROM raw_qb_fantasy JOIN players ON players.name = raw_qb_fantasy.player
 UNION
-SELECT id,week,stand,ppr
+SELECT id,team,week,stand,ppr
 FROM raw_rb_fantasy JOIN players ON players.name = raw_rb_fantasy.player
 UNION
-SELECT id,week,stand,ppr
+SELECT id,team,week,stand,ppr
 FROM raw_wr_fantasy JOIN players ON players.name = raw_wr_fantasy.player
 UNION
-SELECT id,week,stand,ppr
+SELECT id,team,week,stand,ppr
 FROM raw_te_fantasy JOIN players ON players.name = raw_te_fantasy.player;

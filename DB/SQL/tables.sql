@@ -64,6 +64,7 @@ CREATE TABLE receiving_weeks (
 
 CREATE TABLE fantasy_weeks (
     player_id INTEGER REFERENCES players(id) ON DELETE CASCADE,
+    team_id VARCHAR(3) REFERENCES teams(id) ON DELETE CASCADE,
     week INTEGER,
     stand NUMERIC(5,2) NOT NULL,
     ppr NUMERIC(5,2) NOT NULL,
