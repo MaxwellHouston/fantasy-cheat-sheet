@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { DataTable } from '../dataTable/DataTable';
 
-export const Teams = () => {
-    const [teamData, setTeamData] = useState([]);
+export const Teams = ({testData}) => {
+    const [teamData, setTeamData] = useState(testData);
 
     return(
         <div className="teams-page">
