@@ -3,7 +3,7 @@ import { Adp } from './components/adp/Adp';
 import { Footer } from './components/footer/Footer';
 import { Home } from './components/home/Home';
 import { NavBar } from './components/navbar/NavBar';
-import { PlayerProfile } from './components/players/PlayerProfile';
+import { PlayerProfile } from './components/playerProfile/PlayerProfile';
 import { Players } from './components/players/Players';
 import { TeamProfile } from './components/teams/TeamProfile';
 import { Teams } from './components/teams/Teams';
