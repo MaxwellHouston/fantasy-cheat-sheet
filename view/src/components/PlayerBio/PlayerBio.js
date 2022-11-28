@@ -16,7 +16,7 @@ export const PlayerBio = ({player}) => {
                 setPlayerBio(data);
                 setFetchError(false);
             } catch (error) {
-                setFetchError(error.message);
+                setFetchError(true);
             }
         }, [player]
     ); 
@@ -25,9 +25,14 @@ export const PlayerBio = ({player}) => {
         loadBio();
     },[loadBio]);
 
+    if(fetchError) {
+        return(
+            <Alert severity="error">Failed to load player bio. Please refresh.</Alert>
+        )
+    }
+
     return(
         <div className="player-bio">
-            {fetchError && <Alert severity="error">Failed to load player bio. Please refresh.</Alert>}
             <h1 className="player-header">{player}</h1>
             <Avatar alt={player} src={playerBio.imgSrc} />
             <div className="bio-top-row">
