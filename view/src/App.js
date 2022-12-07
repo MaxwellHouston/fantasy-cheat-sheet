@@ -5,7 +5,7 @@ import { Home } from './components/home/Home';
 import { NavBar } from './components/navbar/NavBar';
 import { PlayerProfile } from './components/playerProfile/PlayerProfile';
 import { Players } from './components/players/Players';
-import { TeamProfile } from './components/teams/TeamProfile';
+import { TeamProfile } from './components/teamProfile/TeamProfile';
 import { Teams } from './components/teams/Teams';
 import './css/App.css';
 
