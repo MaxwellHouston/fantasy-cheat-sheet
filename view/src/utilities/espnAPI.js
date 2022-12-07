@@ -17,7 +17,7 @@ export const fetchBio = async (playerName) => {
         }
         return playerObject;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
