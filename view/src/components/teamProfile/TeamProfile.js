@@ -28,10 +28,10 @@ export const TeamProfile = ({teamID, mockStats, mockRoster}) => {
             {imgSrc === 'loading' ? <CircularProgress /> : !imgSrc ? <Alert severity="error">Failed to load team logo. Please refresh.</Alert> : <img src={imgSrc} alt={`${team} team logo`} />}
             {/*Team Bio*/}
             <h2>Season Rankings</h2>
-            <DataTable dataArray={teamStats} rowIdOne={'row_id'} rowIdTwo={null} />
-            <Divider varient='middle' />
+            <DataTable dataArray={teamStats} rowIdOne={'row_id'} rowIdTwo={null} tableId='team-season-ranking' />
+            <Divider varient='middle' data-testid='divider' />
             <h2>Fantasy Contributers</h2>
-            <DataTable dataArray={roster} rowIdOne={'id'} rowIdTwo={null} />   
+            <DataTable dataArray={roster} rowIdOne={'id'} rowIdTwo={null} tableId='team-roster' />   
         </div>
     )
 }
