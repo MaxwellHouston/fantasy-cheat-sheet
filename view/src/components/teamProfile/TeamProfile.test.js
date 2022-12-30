@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup, within } from '@testing-library/react';
 import { TeamProfile } from './TeamProfile';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -33,7 +33,16 @@ afterEach(() => {
 
 const teamID = 'LAR';
 const mockStats = [{"row_id":"LAR", "Position": "Ranking", "qb":11,"rb":28,"wr":1,"te":24}];
-const mockRoster = [{"name":"Matthew Stafford","id":355,"team_id":"LAR","pos":"QB","rank":"6","total":"329.74","ptsg":"19.40"},{"name":"Darrell Henderson","id":47,"team_id":"LAR","pos":"RB","rank":"27","total":"163.40","ptsg":"13.62"},{"name":"Sony Michel","id":500,"team_id":"LAR","pos":"RB","rank":"31","total":"146.60","ptsg":"10.47"},{"name":"Cam Akers","id":146,"team_id":"LAR","pos":"RB","rank":"140","total":"4.30","ptsg":"4.30"},{"name":"Buddy Howell","id":521,"team_id":"LAR","pos":"RB","rank":"156","total":"1.10","ptsg":"1.10"},{"name":"Jake Funk","id":404,"team_id":"LAR","pos":"RB","rank":"158","total":"0.60","ptsg":"0.60"},{"name":"Mekhi Sargent","id":385,"team_id":"LAR","pos":"RB","rank":"159","total":"0.50","ptsg":"0.50"},{"name":"Tyler Higbee","id":512,"team_id":"LAR","pos":"TE","rank":"13","total":"145.70","ptsg":"10.41"},{"name":"Kendall Blanton","id":26,"team_id":"LAR","pos":"TE","rank":"86","total":"6.50","ptsg":"3.25"},{"name":"Johnny Mundt","id":205,"team_id":"LAR","pos":"TE","rank":"104","total":"1.90","ptsg":"1.90"},{"name":"Brycen Hopkins","id":14,"team_id":"LAR","pos":"TE","rank":"105","total":"1.90","ptsg":"1.90"},{"name":"Cooper Kupp","id":438,"team_id":"LAR","pos":"WR","rank":"1","total":"439.50","ptsg":"25.85"},{"name":"Van Jefferson","id":419,"team_id":"LAR","pos":"WR","rank":"36","total":"168.20","ptsg":"9.89"},{"name":"Robert Woods","id":583,"team_id":"LAR","pos":"WR","rank":"51","total":"137.20","ptsg":"15.24"},{"name":"Odell Beckham Jr.","id":83,"team_id":"LAR","pos":"WR","rank":"81","total":"87.50","ptsg":"10.94"},{"name":"DeSean Jackson","id":507,"team_id":"LAR","pos":"WR","rank":"137","total":"36.10","ptsg":"7.22"},{"name":"Ben Skowronek","id":539,"team_id":"LAR","pos":"WR","rank":"155","total":"24.30","ptsg":"4.86"}];
+const mockRoster = [{"name":"Matthew Stafford","row_id":355,"team_id":"LAR","pos":"QB","rank":"6","total":"329.74","ptsg":"19.40"},{"name":"Darrell Henderson","row_id":47,"team_id":"LAR","pos":"RB","rank":"27","total":"163.40","ptsg":"13.62"},{"name":"Tyler Higbee","row_id":512,"team_id":"LAR","pos":"TE","rank":"13","total":"145.70","ptsg":"10.41"},{"name":"Cooper Kupp","row_id":438,"team_id":"LAR","pos":"WR","rank":"1","total":"439.50","ptsg":"25.85"}];
+
+const checkHeaders = (dataModel) => {
+    for(let field in dataModel) {
+        if(field !== 'row_id') {
+            let headerElement = screen.getByRole('columnheader', {name: field});
+            expect(headerElement).toBeInTheDocument();
+        }
+    }
+}
 
 describe('Page renders properly', () => {
 
@@ -67,7 +76,7 @@ describe('Page renders properly', () => {
         expect(rankingsTable).toBeInTheDocument();
     });
 
-})
+});
 
 describe('All 3 image states render properly', () => {
 
@@ -93,4 +102,40 @@ describe('All 3 image states render properly', () => {
         expect(errorAlert).toBeInTheDocument();
     });
 
-})
+});
+
+describe('Rankings table renders correct data', () => {
+
+    test('Table headers render properly', () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        /* Test */
+        checkHeaders(mockStats[0]);
+    });
+
+    test('Correct number of rows render', () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        const rankingsTable = screen.getByLabelText('team-season-ranking');
+        const rankingsRows = within(rankingsTable).getAllByRole('row');
+        /* Test */
+        expect(rankingsRows.length-1).toEqual(mockStats.length);
+    });
+    
+});
+
+describe('Roster table renders correct data', () => {
+
+    test('Table headers render properly', () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        /* Test */
+        checkHeaders(mockRoster[0]);
+    });
+
+    test('Correct number of rows render', () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        const rosterTable = screen.getByLabelText('team-roster');
+        const rosterRows = within(rosterTable).getAllByRole('row');
+        /* Test */
+        expect(rosterRows.length-1).toEqual(mockRoster.length);
+    });
+
+});

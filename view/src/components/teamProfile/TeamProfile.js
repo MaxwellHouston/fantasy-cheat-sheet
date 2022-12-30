@@ -31,7 +31,7 @@ export const TeamProfile = ({teamID, mockStats, mockRoster}) => {
             <DataTable dataArray={teamStats} rowIdOne={'row_id'} rowIdTwo={null} tableId='team-season-ranking' />
             <Divider varient='middle' data-testid='divider' />
             <h2>Fantasy Contributers</h2>
-            <DataTable dataArray={roster} rowIdOne={'id'} rowIdTwo={null} tableId='team-roster' />   
+            <DataTable dataArray={roster} rowIdOne={'row_id'} rowIdTwo={null} tableId='team-roster' />   
         </div>
     )
 }
