@@ -21,3 +21,11 @@ export const fetchBio = async (playerName) => {
     }
 }
 
+export const fetchTeamImg = async (teamId) => {
+    try {
+        await axios(`https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${teamId}.png&h=150&w=150`);
+        return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${teamId}.png&h=150&w=150`;
+    } catch (error) {
+        return null;
+    }
+}
