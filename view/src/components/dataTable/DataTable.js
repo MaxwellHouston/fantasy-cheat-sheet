@@ -1,7 +1,7 @@
 import { DataGrid } from '@mui/x-data-grid';
 import './DataTable.css';
 
-export const DataTable = ({dataArray, rowIdOne, rowIdTwo}) => {
+export const DataTable = ({dataArray, rowIdOne, rowIdTwo, tableId}) => {
 
     const createTemplate = (dataSample, id) => {
       let template = [];
@@ -17,6 +17,7 @@ export const DataTable = ({dataArray, rowIdOne, rowIdTwo}) => {
   return (
       <div className='table-container'>
         <DataGrid
+          aria-label={tableId}
           rows={dataArray}
           getRowId={(row) => rowIdTwo ? (row[rowIdOne] + row[rowIdTwo]) : row[rowIdOne]}  
           columns={columnsTemplate}
