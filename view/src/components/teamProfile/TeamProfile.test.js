@@ -1,7 +1,33 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { TeamProfile } from './TeamProfile';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
+/*  MSW Setup  */
+const testUrl = `https://a.espncdn.com/combiner/i`;
+const resObject = {
+    status: 200,
+    url: true
+}
+
+const successResponse = rest.get(testUrl, (req, res, ctx) => {
+    return res(
+        ctx.json(resObject)
+    );
+});
+
+const errorResponse = rest.get(testUrl, (req, res, ctx) => {
+    return res(ctx.status(500));
+})
+
+const handlers =[successResponse, errorResponse];
+
+const server = setupServer(...handlers);
+
+beforeAll(() => server.listen());
+afterAll(() => server.close());
 afterEach(() => {
+    server.resetHandlers();
     cleanup();
 });
 
@@ -18,13 +44,6 @@ describe('Page renders properly', () => {
         /* Test */
         expect(headerOne).toBeInTheDocument();
         expect(headerTwo).toBeInTheDocument();
-    });
-
-    test('Image renders as progress bar', () => {
-        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
-        const teamLogo = screen.getByRole('progressbar');
-        /* Test */
-        expect(teamLogo).toBeInTheDocument();
     });
 
     test('Divider renders', () => {
@@ -46,6 +65,32 @@ describe('Page renders properly', () => {
         const rankingsTable = screen.getByLabelText('team-roster');
         /* Test */
         expect(rankingsTable).toBeInTheDocument();
-    })
+    });
+
+})
+
+describe('All 3 image states render properly', () => {
+
+    test('Image renders as progress bar', () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        const loadingWheel = screen.getByRole('progressbar');
+        /* Test */
+        expect(loadingWheel).toBeInTheDocument();
+    });
+
+    test('Image loads with successfull fetch', async () => {
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        const teamLogo = await screen.findByAltText('LAR team logo');
+        /* Test */
+        expect(teamLogo).toBeInTheDocument();
+    });
+
+    test('Error alert renders with failed fetch', async () => {
+        server.use(errorResponse);
+        render(<TeamProfile teamID={teamID} mockStats={mockStats} mockRoster={mockRoster} />);
+        const errorAlert = await screen.findByRole('alert');
+        /* Test */
+        expect(errorAlert).toBeInTheDocument();
+    });
 
 })
